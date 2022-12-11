@@ -1,0 +1,9 @@
+[tool.djlint]
+ignore="H013,H006,H017,H021,H031,T002,T003"
+
+[tool.isort]
+extend_skip_glob = ["**/migrations/*"]
+
+[tool.django-stubs]
+django_settings_module = "shiftopoly.settings"
+known_first_party = ["api", "users"]

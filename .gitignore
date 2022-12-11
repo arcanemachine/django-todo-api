@@ -1,0 +1,46 @@
+# misc
+geckodriver.log
+keys.py
+local_config.py
+server_config.py
+secret_key.py
+gunicorn.sh
+node_modules/
+deleteme
+deleteme.*
+staticfiles/
+Session*.vim
+
+# django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+
+# temp files
+*.sw?
+*.tmp
+
+# python #
+*.py[cod]
+*$py.class
+
+# pyenv
+.python-version
+
+# celery
+celerybeat-schedule
+celerybeat-schedule.*
+
+# coverage
+.coverage
+
+# environments
+*.local
+.env.override
+.venv
+venv/
+/test-results/
+/playwright-report/
+/playwright/.cache/
