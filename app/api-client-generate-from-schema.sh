@@ -14,4 +14,4 @@ fi
 echo "Generating API client for language: '$client_language'"
 
 
-openapi-generator-cli generate -i schema.yml -g $client_language -o ./api-client/
+openapi-generator-cli generate -i schema.yml -g $client_language -o ./openapi
