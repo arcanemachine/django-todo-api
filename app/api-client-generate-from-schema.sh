@@ -2,9 +2,9 @@
 
 # examples
 # - from schema.yml:
-#   openapi-generator-cli generate -i schema.yml -g typescript-fetch -o ./api-client/
+#   openapi-generator-cli generate -i schema.yml -g typescript-fetch -o ./openapi/
 # - from URL:
-#   openapi-generator-cli generate -i http://localhost:8000/api/schema/ -g typescript-fetch -o ./api-client/
+#   openapi-generator-cli generate -i http://localhost:8000/api/schema/ -g typescript-fetch -o ./openapi/
 
 if [ "$1" != "" ]; then
   client_language="$1"
