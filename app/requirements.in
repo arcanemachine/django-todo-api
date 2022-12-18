@@ -1,3 +1,4 @@
+dj-rest-auth[with_social]
 django
 django-cors-headers
 djangorestframework

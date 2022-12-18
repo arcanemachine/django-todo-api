@@ -12,6 +12,7 @@ app_name = "api"
 
 router = routers.SimpleRouter(trailing_slash=False)
 router.register(r"todos", views.TodoViewSet, basename="todo")
+# router.register(r"users", views.UserViewSet, basename="user")
 
 urlpatterns = router.urls + [
     path(

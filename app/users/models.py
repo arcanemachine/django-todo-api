@@ -1,3 +1,3 @@
 from django.db import models
 
-class Todo(models.Model):
+# Create your models here.

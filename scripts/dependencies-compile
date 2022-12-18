@@ -1,0 +1,36 @@
+#!/bin/bash
+
+cd $(dirname "$0")/../
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+  echo "This script compiles pip-tools dependency files (e.g. 'requirements.in') to their respective 'requirements.txt' files."
+  echo ""
+  echo "NOTE: This script requires pip-tools to be installed."
+  echo "Ensure that you install pip-tools (in a virtualenv!) before continuing."
+  exit 0
+fi
+
+echo "Synchronizing requirements*.in files to requirements*.txt files..."
+
+# activate the virtualenv
+. ./venv/bin/activate
+
+# convert requirements.in files to requirements.txt
+cd app/
+pip-compile requirements.in "$@"
+pip-compile requirements-dev.in -o requirements-dev.txt "$@"
+
+# print build instructions and exit
+if [ "$1" != "--install" ] && [ "$2" != "--install" ]; then
+  echo ""
+  echo "ok"
+  echo ""
+  echo "Requirements have been synced, but have not been installed."
+  echo ""
+  echo "To install dependencies in the containers after syncing, run one of the following commands:"
+  echo "  - dev: 'pip-sync requirements.txt requirements-dev.txt'"
+  echo "  - staging/prod: 'pip-sync requirements.txt'"
+  echo ""
+  echo "done"
+  exit 0
+fi
