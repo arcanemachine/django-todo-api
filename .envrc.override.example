@@ -1,0 +1,2 @@
+export CSRF_TRUSTED_ORIGINS="https://your-domain:5173"
+# export SESSION_COOKIE_DOMAIN=".your-domain.com"

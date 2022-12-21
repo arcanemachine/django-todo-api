@@ -30,4 +30,15 @@ urlpatterns = router.urls + [
         SpectacularRedocView.as_view(url_name="api:schema"),
         name="redoc",
     ),
+    # utility
+    path(
+        "utils/csrf/get",
+        views.csrf_get,
+        name="csrf_get",
+    ),
+    path(
+        "utils/csrf/check",
+        views.csrf_check,
+        name="csrf_check",
+    ),
 ]

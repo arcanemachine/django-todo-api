@@ -1,4 +1,8 @@
+# environment
+*.override
+
 # misc
+app/.cert/
 geckodriver.log
 keys.py
 local_config.py

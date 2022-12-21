@@ -1,10 +1,41 @@
 import os
 from pathlib import Path
+from typing import Dict
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = True
 ALLOWED_HOSTS = ["*"]
+
+CSRF_TRUSTED_ORIGINS = os.environ["CSRF_TRUSTED_ORIGINS"].split(",")
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+LANGUAGE_CODE = "en-us"
+ROOT_URLCONF = "todo.urls"
+SERVER_EMAIL = "no-reply@example.com"
+DEFAULT_FROM_EMAIL = SERVER_EMAIL
+# SESSION_COOKIE_DOMAIN = os.environ["SESSION_COOKIE_DOMAIN"]
+SITE_ID = 1
+STATIC_URL = "static/"
+TIME_ZONE = "UTC"
+USE_I18N = True
+USE_TZ = True
+WSGI_APPLICATION = "todo.wsgi.application"
+
+validators_prefix = "django.contrib.auth.password_validation"
+AUTH_PASSWORD_VALIDATORS = [
+    {"NAME": f"{validators_prefix}.UserAttributeSimilarityValidator"},
+    {"NAME": f"{validators_prefix}.MinimumLengthValidator"},
+    {"NAME": f"{validators_prefix}.CommonPasswordValidator"},
+    {"NAME": f"{validators_prefix}.NumericPasswordValidator"},
+]
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -25,11 +56,10 @@ INSTALLED_APPS = [
     "corsheaders",
     "dj_rest_auth",
     "dj_rest_auth.registration",
+    "django_extensions",
     "rest_framework",
     "rest_framework.authtoken",
 ]
-
-SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -41,8 +71,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-ROOT_URLCONF = "todo.urls"
 
 TEMPLATES = [
     {
@@ -60,55 +88,28 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "todo.wsgi.application"
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
-validators_prefix = "django.contrib.auth.password_validation"
-AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": f"{validators_prefix}.UserAttributeSimilarityValidator"},
-    {"NAME": f"{validators_prefix}.MinimumLengthValidator"},
-    {"NAME": f"{validators_prefix}.CommonPasswordValidator"},
-    {"NAME": f"{validators_prefix}.NumericPasswordValidator"},
-]
-
-LANGUAGE_CODE = "en-us"
-TIME_ZONE = "UTC"
-USE_I18N = True
-USE_TZ = True
-
-STATIC_URL = "static/"
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# email
-SERVER_EMAIL = "no-reply@example.com"
-DEFAULT_FROM_EMAIL = SERVER_EMAIL
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
 # THIRD-PARTY #
 # allauth
 
 # corsheaders
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = CSRF_TRUSTED_ORIGINS
 
 # rest_framework
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.AllowAny",
+        "rest_framework.permissions.IsAuthenticated",
     ],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 # drf_spectacular
-SPECTACULAR_SETTINGS = {
+SPECTACULAR_SETTINGS: Dict[str, any] = {
     "TITLE": "Todo List API",
     "DESCRIPTION": "A basic todo list API.",
     "VERSION": "0.0.1",

@@ -4,18 +4,38 @@
 #
 #    pip-compile --output-file=requirements-dev.txt requirements-dev.in
 #
+asgiref==3.5.2
+    # via
+    #   -c requirements.txt
+    #   django
 asttokens==2.2.1
     # via stack-data
 backcall==0.2.0
     # via ipython
+cffi==1.15.1
+    # via
+    #   -c requirements.txt
+    #   cryptography
+cryptography==38.0.4
+    # via
+    #   -c requirements.txt
+    #   pyopenssl
 decorator==5.1.1
     # via ipython
+django==4.1.4
+    # via
+    #   -c requirements.txt
+    #   django-extensions
+django-extensions==3.2.1
+    # via -r requirements-dev.in
 executing==1.2.0
     # via stack-data
 ipython==8.7.0
     # via -r requirements-dev.in
 jedi==0.18.2
     # via ipython
+markupsafe==2.1.1
+    # via werkzeug
 matplotlib-inline==0.1.6
     # via ipython
 parso==0.8.3
@@ -30,10 +50,20 @@ ptyprocess==0.7.0
     # via pexpect
 pure-eval==0.2.2
     # via stack-data
+pycparser==2.21
+    # via
+    #   -c requirements.txt
+    #   cffi
 pygments==2.13.0
     # via ipython
+pyopenssl==22.1.0
+    # via -r requirements-dev.in
 six==1.16.0
     # via asttokens
+sqlparse==0.4.3
+    # via
+    #   -c requirements.txt
+    #   django
 stack-data==0.6.2
     # via ipython
 traitlets==5.7.0
@@ -42,3 +72,5 @@ traitlets==5.7.0
     #   matplotlib-inline
 wcwidth==0.2.5
     # via prompt-toolkit
+werkzeug==2.2.2
+    # via -r requirements-dev.in

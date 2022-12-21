@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd $(dirname "$0")
+
+python3 manage.py runserver_plus --cert-file .cert/cert.pem --key-file .cert/key.pem
