@@ -4,7 +4,7 @@ info:
   version: 0.0.1
   description: A basic todo list API.
 paths:
-  /api/auth/login/:
+  /auth/login/:
     post:
       operationId: auth_login_create
       description: |-
@@ -40,7 +40,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Token'
           description: ''
-  /api/auth/logout/:
+  /auth/logout/:
     post:
       operationId: auth_logout_create
       description: |-
@@ -61,7 +61,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RestAuthDetail'
           description: ''
-  /api/auth/password/change/:
+  /auth/password/change/:
     post:
       operationId: auth_password_change_create
       description: |-
@@ -93,7 +93,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RestAuthDetail'
           description: ''
-  /api/auth/password/reset/:
+  /auth/password/reset/:
     post:
       operationId: auth_password_reset_create
       description: |-
@@ -126,7 +126,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RestAuthDetail'
           description: ''
-  /api/auth/password/reset/confirm/:
+  /auth/password/reset/confirm/:
     post:
       operationId: auth_password_reset_confirm_create
       description: |-
@@ -161,7 +161,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RestAuthDetail'
           description: ''
-  /api/auth/registration/:
+  /auth/registration/:
     post:
       operationId: auth_registration_create
       tags:
@@ -189,7 +189,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Token'
           description: ''
-  /api/auth/registration/resend-email/:
+  /auth/registration/resend-email/:
     post:
       operationId: auth_registration_resend_email_create
       tags:
@@ -216,7 +216,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RestAuthDetail'
           description: ''
-  /api/auth/registration/verify-email/:
+  /auth/registration/verify-email/:
     post:
       operationId: auth_registration_verify_email_create
       tags:
@@ -244,7 +244,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RestAuthDetail'
           description: ''
-  /api/auth/user/:
+  /auth/user/:
     get:
       operationId: auth_user_retrieve
       description: |-
@@ -337,7 +337,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserDetails'
           description: ''
-  /api/todos:
+  /todos:
     get:
       operationId: todos_list
       tags:
@@ -380,7 +380,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Todo'
           description: ''
-  /api/todos/{id}:
+  /todos/{id}:
     get:
       operationId: todos_retrieve
       parameters:

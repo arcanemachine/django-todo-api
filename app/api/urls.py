@@ -11,8 +11,8 @@ from api import views
 app_name = "api"
 
 router = routers.SimpleRouter(trailing_slash=False)
-router.register(r"todos", views.TodoViewSet, basename="todo")
-# router.register(r"users", views.UserViewSet, basename="user")
+router.register(r"todos", views.TodoViewSet, basename="todos")
+# router.register(r"users", views.UserViewSet, basename="users")
 
 urlpatterns = router.urls + [
     path(

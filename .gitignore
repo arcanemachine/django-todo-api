@@ -1,8 +1,12 @@
+# openapi client generator stuff
+/app/openapi/
+/app/openapitools.json
+
 # environment
 *.override
 
 # misc
-app/.cert/
+.cert/
 geckodriver.log
 keys.py
 local_config.py

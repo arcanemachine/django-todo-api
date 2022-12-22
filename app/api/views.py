@@ -29,6 +29,10 @@ class TodoViewSet(viewsets.ModelViewSet):
 
 # utility
 def csrf_get(request):
+    # if request.method == 'GET':
+    #     return JsonResponse({"csrftoken": get_token(request)})
+    # else:
+    #     return JsonResponse({"result": "OK"})
     return JsonResponse({"csrftoken": get_token(request)})
 
 
