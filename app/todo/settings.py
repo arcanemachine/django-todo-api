@@ -7,14 +7,12 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = os.environ["CSRF_TRUSTED_ORIGINS"].split(",")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 LANGUAGE_CODE = "en-us"
 ROOT_URLCONF = "todo.urls"
 SERVER_EMAIL = "no-reply@example.com"
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
-# SESSION_COOKIE_DOMAIN = os.environ["SESSION_COOKIE_DOMAIN"]
 SITE_ID = 1
 STATIC_URL = "static/"
 TIME_ZONE = "UTC"
@@ -53,7 +51,7 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "corsheaders",
+    # "corsheaders",
     "dj_rest_auth",
     "dj_rest_auth.registration",
     "django_extensions",
@@ -64,7 +62,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
+    # "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -92,9 +90,9 @@ TEMPLATES = [
 # allauth
 
 # corsheaders
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = CSRF_TRUSTED_ORIGINS
+# CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOWED_ORIGINS = os.environ["CORS_ALLOWED_ORIGINS"].split(",")
 
 # rest_framework
 REST_FRAMEWORK = {
