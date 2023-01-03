@@ -4,3 +4,4 @@ django_extensions
 Werkzeug  # required for runserver_plus (django_extensions)
 pyOpenSSL  # required for SSL support in runserver_plus (django_extensions)
 ipython
+locust
