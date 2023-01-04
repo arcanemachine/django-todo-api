@@ -5,7 +5,7 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 from rest_framework import routers
-from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework.authentication import TokenAuthentication
 
 from api import views
 
@@ -16,12 +16,11 @@ router.register(r"todos", views.TodoViewSet, basename="todos")
 # router.register(r"users", views.UserViewSet, basename="users")
 
 urlpatterns = router.urls + [
-    # auth
     path("", views.api_root, name="api_root"),
     # auth
-    path("auth/check/", views.user_auth_status_check, name="user_auth_status_check"),
-    path("auth/login/token/", obtain_auth_token, name="login_token"),
-    path("auth/login/session/", views.SessionLoginView.as_view(), name="login_session"),
+    path("auth/check/", views.auth_status_check, name="auth_status_check"),
+    path("auth/login/", views.SessionLogin.as_view(), name="login_session"),
+    path("auth/login/token/", views.ProjectObtainAuthToken.as_view(), name="login"),
     path("auth/", include("dj_rest_auth.urls")),
     path("auth/registration/", include("dj_rest_auth.registration.urls")),
     # utility

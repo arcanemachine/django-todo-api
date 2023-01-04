@@ -21,53 +21,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Login'
+              $ref: '#/components/schemas/LoginRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Login'
+              $ref: '#/components/schemas/LoginRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Login'
+              $ref: '#/components/schemas/LoginRequest'
         required: true
       security:
       - cookieAuth: []
-      - tokenAuth: []
-      - {}
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Token'
-          description: ''
-  /api/auth/login/session/:
-    post:
-      operationId: auth_login_session_create
-      description: |-
-        Check the credentials and return the REST Token
-        if the credentials are valid and authenticated.
-        Calls Django Auth login method to register User ID
-        in Django session framework
-
-        Accept the following POST parameters: username, password
-        Return the REST Framework Token Object's key.
-      tags:
-      - auth
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Login'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Login'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Login'
-        required: true
-      security:
-      - cookieAuth: []
-      - tokenAuth: []
       - {}
       responses:
         '200':
@@ -85,16 +48,15 @@ paths:
         content:
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/AuthToken'
+              $ref: '#/components/schemas/AuthTokenRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/AuthToken'
+              $ref: '#/components/schemas/AuthTokenRequest'
           application/json:
             schema:
-              $ref: '#/components/schemas/AuthToken'
+              $ref: '#/components/schemas/AuthTokenRequest'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
       responses:
         '200':
@@ -114,8 +76,8 @@ paths:
       tags:
       - auth
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -138,17 +100,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PasswordChange'
+              $ref: '#/components/schemas/PasswordChangeRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PasswordChange'
+              $ref: '#/components/schemas/PasswordChangeRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PasswordChange'
+              $ref: '#/components/schemas/PasswordChangeRequest'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -170,17 +132,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PasswordReset'
+              $ref: '#/components/schemas/PasswordResetRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PasswordReset'
+              $ref: '#/components/schemas/PasswordResetRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PasswordReset'
+              $ref: '#/components/schemas/PasswordResetRequest'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -205,17 +167,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PasswordResetConfirm'
+              $ref: '#/components/schemas/PasswordResetConfirmRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PasswordResetConfirm'
+              $ref: '#/components/schemas/PasswordResetConfirmRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PasswordResetConfirm'
+              $ref: '#/components/schemas/PasswordResetConfirmRequest'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -233,17 +195,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Register'
+              $ref: '#/components/schemas/RegisterRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Register'
+              $ref: '#/components/schemas/RegisterRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Register'
+              $ref: '#/components/schemas/RegisterRequest'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '201':
@@ -261,16 +223,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ResendEmailVerification'
+              $ref: '#/components/schemas/ResendEmailVerificationRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/ResendEmailVerification'
+              $ref: '#/components/schemas/ResendEmailVerificationRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/ResendEmailVerification'
+              $ref: '#/components/schemas/ResendEmailVerificationRequest'
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '201':
@@ -288,17 +250,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VerifyEmail'
+              $ref: '#/components/schemas/VerifyEmailRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/VerifyEmail'
+              $ref: '#/components/schemas/VerifyEmailRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/VerifyEmail'
+              $ref: '#/components/schemas/VerifyEmailRequest'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -322,8 +284,8 @@ paths:
       tags:
       - auth
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -348,17 +310,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserDetails'
+              $ref: '#/components/schemas/UserDetailsRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/UserDetails'
+              $ref: '#/components/schemas/UserDetailsRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/UserDetails'
+              $ref: '#/components/schemas/UserDetailsRequest'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -383,16 +345,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedUserDetails'
+              $ref: '#/components/schemas/PatchedUserDetailsRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedUserDetails'
+              $ref: '#/components/schemas/PatchedUserDetailsRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedUserDetails'
+              $ref: '#/components/schemas/PatchedUserDetailsRequest'
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       responses:
         '200':
           content:
@@ -406,8 +368,8 @@ paths:
       tags:
       - todos
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -426,17 +388,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Todo'
+              $ref: '#/components/schemas/TodoRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Todo'
+              $ref: '#/components/schemas/TodoRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Todo'
+              $ref: '#/components/schemas/TodoRequest'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '201':
@@ -458,8 +420,8 @@ paths:
       tags:
       - todos
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -483,17 +445,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Todo'
+              $ref: '#/components/schemas/TodoRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Todo'
+              $ref: '#/components/schemas/TodoRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Todo'
+              $ref: '#/components/schemas/TodoRequest'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -517,16 +479,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedTodo'
+              $ref: '#/components/schemas/PatchedTodoRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedTodo'
+              $ref: '#/components/schemas/PatchedTodoRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedTodo'
+              $ref: '#/components/schemas/PatchedTodoRequest'
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -547,8 +509,8 @@ paths:
       tags:
       - todos
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '204':
@@ -559,8 +521,8 @@ paths:
       tags:
       - utils
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -577,17 +539,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Csrfmiddlewaretoken'
+              $ref: '#/components/schemas/CsrfmiddlewaretokenRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Csrfmiddlewaretoken'
+              $ref: '#/components/schemas/CsrfmiddlewaretokenRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Csrfmiddlewaretoken'
+              $ref: '#/components/schemas/CsrfmiddlewaretokenRequest'
         required: true
       security:
-      - cookieAuth: []
       - tokenAuth: []
+      - cookieAuth: []
       - {}
       responses:
         '200':
@@ -601,24 +563,37 @@ components:
     AuthToken:
       type: object
       properties:
-        username:
-          type: string
-          writeOnly: true
-        password:
-          type: string
-          writeOnly: true
         token:
           type: string
           readOnly: true
+    AuthTokenRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+          minLength: 1
+        password:
+          type: string
+          writeOnly: true
+          minLength: 1
       required:
       - password
-      - token
       - username
     Csrfmiddlewaretoken:
       type: object
       properties:
         csrfmiddlewaretoken:
           type: string
+          maxLength: 64
+      required:
+      - csrfmiddlewaretoken
+    CsrfmiddlewaretokenRequest:
+      type: object
+      properties:
+        csrfmiddlewaretoken:
+          type: string
+          minLength: 1
           maxLength: 64
       required:
       - csrfmiddlewaretoken
@@ -634,116 +609,128 @@ components:
           type: string
       required:
       - password
-    PasswordChange:
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 1
+      required:
+      - password
+    PasswordChangeRequest:
       type: object
       properties:
         new_password1:
           type: string
+          minLength: 1
           maxLength: 128
         new_password2:
           type: string
+          minLength: 1
           maxLength: 128
       required:
       - new_password1
       - new_password2
-    PasswordReset:
+    PasswordResetConfirmRequest:
+      type: object
+      description: Serializer for confirming a password reset attempt.
+      properties:
+        new_password1:
+          type: string
+          minLength: 1
+          maxLength: 128
+        new_password2:
+          type: string
+          minLength: 1
+          maxLength: 128
+        uid:
+          type: string
+          minLength: 1
+        token:
+          type: string
+          minLength: 1
+      required:
+      - new_password1
+      - new_password2
+      - token
+      - uid
+    PasswordResetRequest:
       type: object
       description: Serializer for requesting a password reset e-mail.
       properties:
         email:
           type: string
           format: email
+          minLength: 1
       required:
       - email
-    PasswordResetConfirm:
-      type: object
-      description: Serializer for confirming a password reset attempt.
-      properties:
-        new_password1:
-          type: string
-          maxLength: 128
-        new_password2:
-          type: string
-          maxLength: 128
-        uid:
-          type: string
-        token:
-          type: string
-      required:
-      - new_password1
-      - new_password2
-      - token
-      - uid
-    PatchedTodo:
+    PatchedTodoRequest:
       type: object
       properties:
-        id:
-          type: integer
-          readOnly: true
         content:
           type: string
+          minLength: 1
           maxLength: 255
         is_completed:
           type: boolean
-    PatchedUserDetails:
+    PatchedUserDetailsRequest:
       type: object
       description: User model w/o password
       properties:
-        pk:
-          type: integer
-          readOnly: true
-          title: ID
         username:
           type: string
+          minLength: 1
           description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
             only.
           pattern: ^[\w.@+-]+$
           maxLength: 150
-        email:
-          type: string
-          format: email
-          readOnly: true
-          title: Email address
         first_name:
           type: string
           maxLength: 150
         last_name:
           type: string
           maxLength: 150
-    Register:
+    RegisterRequest:
       type: object
       properties:
         username:
           type: string
-          maxLength: 150
           minLength: 1
+          maxLength: 150
         email:
           type: string
           format: email
+          minLength: 1
         password1:
           type: string
           writeOnly: true
+          minLength: 1
         password2:
           type: string
           writeOnly: true
+          minLength: 1
       required:
       - password1
       - password2
       - username
-    ResendEmailVerification:
+    ResendEmailVerificationRequest:
       type: object
       properties:
         email:
           type: string
           format: email
+          minLength: 1
     RestAuthDetail:
       type: object
       properties:
         detail:
           type: string
           readOnly: true
-      required:
-      - detail
     Todo:
       type: object
       properties:
@@ -757,7 +744,17 @@ components:
           type: boolean
       required:
       - content
-      - id
+    TodoRequest:
+      type: object
+      properties:
+        content:
+          type: string
+          minLength: 1
+          maxLength: 255
+        is_completed:
+          type: boolean
+      required:
+      - content
     Token:
       type: object
       description: Serializer for Token model.
@@ -793,14 +790,32 @@ components:
           type: string
           maxLength: 150
       required:
-      - email
-      - pk
       - username
-    VerifyEmail:
+    UserDetailsRequest:
+      type: object
+      description: User model w/o password
+      properties:
+        username:
+          type: string
+          minLength: 1
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+      required:
+      - username
+    VerifyEmailRequest:
       type: object
       properties:
         key:
           type: string
+          minLength: 1
       required:
       - key
   securitySchemes:

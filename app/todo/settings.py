@@ -68,6 +68,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # "todo.middleware.debug_middleware",
 ]
 
 TEMPLATES = [
@@ -97,8 +98,8 @@ TEMPLATES = [
 # rest_framework
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
@@ -108,6 +109,8 @@ REST_FRAMEWORK = {
 
 # drf_spectacular
 SPECTACULAR_SETTINGS: Dict[str, any] = {
+    "COMPONENT_NO_READ_ONLY_REQUIRED": True,  # fix: dart client requires 'token' field
+    "COMPONENT_SPLIT_REQUEST": True,  # fix dart client authtoken
     "TITLE": "Todo List API",
     "DESCRIPTION": "A basic todo list API.",
     "VERSION": "0.0.1",

@@ -5,6 +5,8 @@ from django.middleware.csrf import get_token
 from django.urls import reverse
 from rest_framework import permissions as drf_permissions
 from rest_framework import views, viewsets
+from rest_framework.authentication import SessionAuthentication, TokenAuthentication
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 
@@ -34,11 +36,15 @@ class CrsfRequiredApiView(views.APIView):
         return view
 
 
-class SessionLoginView(LoginView):
-    pass
+class ProjectObtainAuthToken(ObtainAuthToken):
+    authentication_classes = [TokenAuthentication]
 
 
-def user_auth_status_check(request):
+class SessionLogin(LoginView):
+    authentication_classes = [SessionAuthentication]
+
+
+def auth_status_check(request):
     return JsonResponse(request.user.is_authenticated, safe=False)
 
 
