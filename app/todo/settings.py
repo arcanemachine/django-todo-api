@@ -89,6 +89,7 @@ TEMPLATES = [
 
 # THIRD-PARTY #
 # allauth
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 # corsheaders
 # CORS_ALLOW_ALL_ORIGINS = True
