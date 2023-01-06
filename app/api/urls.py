@@ -5,7 +5,6 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 from rest_framework import routers
-from rest_framework.authentication import TokenAuthentication
 
 from api import views
 
