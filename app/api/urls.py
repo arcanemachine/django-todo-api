@@ -10,7 +10,7 @@ from api import views
 
 app_name = "api"
 
-router = routers.SimpleRouter()  # trailing_slash=False)
+router = routers.SimpleRouter()
 router.register(r"todos", views.TodoViewSet, basename="todos")
 # router.register(r"users", views.UserViewSet, basename="users")
 
@@ -18,6 +18,11 @@ urlpatterns = router.urls + [
     path("", views.api_root, name="api_root"),
     # auth
     path("auth/check/", views.auth_status_check, name="auth_status_check"),
+    path(
+        "auth/fcm/",
+        views.GCMDeviceViewSet.as_view({"post": "create", "delete": "destroy"}),
+        name="gcmdevices",
+    ),
     path("auth/login/", views.SessionLogin.as_view(), name="login_session"),
     path("auth/login/token/", views.ProjectObtainAuthToken.as_view(), name="login"),
     path("auth/", include("dj_rest_auth.urls")),

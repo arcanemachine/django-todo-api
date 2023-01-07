@@ -4,3 +4,4 @@ django-cors-headers
 djangorestframework
 drf-spectacular
 pip-tools
+django-push-notifications

@@ -2,7 +2,9 @@ from dj_rest_auth.views import LoginView
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
+from push_notifications.models import GCMDevice
 from rest_framework import permissions as drf_permissions
 from rest_framework import views, viewsets
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
@@ -36,6 +38,23 @@ class CrsfRequiredApiView(views.APIView):
         return view
 
 
+class GCMDeviceViewSet(viewsets.ModelViewSet):
+    """
+    Register or unregister a device with Firebase Cloud Messaging (FCM).
+    """
+
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [drf_permissions.IsAuthenticated]
+    serializer_class = serializers.GCMDeviceSerializer
+    queryset = GCMDevice.objects.all()  # drf_spectacular: allow automatic introspection
+
+    def get_object(self):
+        registration_id = self.request.data["registration_id"]
+        user = self.request.user
+
+        return get_object_or_404(GCMDevice, registration_id=registration_id, user=user)
+
+
 class ProjectObtainAuthToken(ObtainAuthToken):
     authentication_classes = [TokenAuthentication]
 
@@ -50,17 +69,13 @@ def auth_status_check(request):
 
 # todos
 class TodoViewSet(viewsets.ModelViewSet):
-    # permission_classes = [drf_permissions.IsAuthenticated]
-    permission_classes = [drf_permissions.AllowAny]
-    queryset = Todo.objects.all()  # allow automatic introspection for drf_spectacular
+    permission_classes = [drf_permissions.IsAuthenticated]
+    queryset = Todo.objects.all()  # drf_spectacular: allow automatic introspection
     serializer_class = serializers.TodoSerializer
 
-    # def post(self, request, *args, **kwargs):
-    #     breakpoint()
-
-    # def get_queryset(self):
-    #     """Return all todos that belong to the user."""
-    #     return Todo.objects.filter(user=self.request.user)
+    def get_queryset(self):
+        """Return all todos that belong to the user."""
+        return Todo.objects.filter(user=self.request.user)
 
 
 # # users

@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "dj_rest_auth",
     "dj_rest_auth.registration",
     "django_extensions",
+    "push_notifications",
     "rest_framework",
     "rest_framework.authtoken",
 ]
@@ -96,6 +97,17 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 # CORS_ALLOW_CREDENTIALS = True
 # CORS_ALLOWED_ORIGINS = os.environ["CORS_ALLOWED_ORIGINS"].split(",")
 
+# drf_spectacular
+SPECTACULAR_SETTINGS: Dict[str, any] = {
+    "COMPONENT_NO_READ_ONLY_REQUIRED": True,  # fix: dart client requires 'token' field
+    "COMPONENT_SPLIT_REQUEST": True,  # fix dart client authtoken
+    "TITLE": "Todo List API",
+    "DESCRIPTION": "A basic todo list API.",
+    "VERSION": "0.0.1",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SERVERS": ["http://192.168.1.100:8001"],
+}
+
 # rest_framework
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
@@ -108,13 +120,7 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
-# drf_spectacular
-SPECTACULAR_SETTINGS: Dict[str, any] = {
-    "COMPONENT_NO_READ_ONLY_REQUIRED": True,  # fix: dart client requires 'token' field
-    "COMPONENT_SPLIT_REQUEST": True,  # fix dart client authtoken
-    "TITLE": "Todo List API",
-    "DESCRIPTION": "A basic todo list API.",
-    "VERSION": "0.0.1",
-    "SERVE_INCLUDE_SCHEMA": False,
-    "SERVERS": ["http://192.168.1.100:8001"],
+# push_notifications
+PUSH_NOTIFICATIONS_SETTINGS = {
+    "FCM_API_KEY": os.environ["FCM_API_KEY"],
 }

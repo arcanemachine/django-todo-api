@@ -30,11 +30,14 @@ django==4.1.4
     #   dj-rest-auth
     #   django-allauth
     #   django-cors-headers
+    #   django-push-notifications
     #   djangorestframework
     #   drf-spectacular
 django-allauth==0.50.0
     # via dj-rest-auth
 django-cors-headers==3.13.0
+    # via -r requirements.in
+django-push-notifications==3.0.0
     # via -r requirements.in
 djangorestframework==3.14.0
     # via

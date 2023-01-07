@@ -4,6 +4,39 @@ info:
   version: 0.0.1
   description: A basic todo list API.
 paths:
+  /api/auth/fcm/:
+    post:
+      operationId: auth_fcm_create
+      description: Register or unregister a device with Firebase Cloud Messaging (FCM).
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GCMDeviceRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GCMDeviceRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GCMDeviceRequest'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          description: No response body
+    delete:
+      operationId: auth_fcm_destroy
+      description: Register or unregister a device with Firebase Cloud Messaging (FCM).
+      tags:
+      - auth
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
   /api/auth/login/:
     post:
       operationId: auth_login_create
@@ -370,7 +403,6 @@ paths:
       security:
       - tokenAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -399,7 +431,6 @@ paths:
       security:
       - tokenAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '201':
           content:
@@ -422,7 +453,6 @@ paths:
       security:
       - tokenAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -456,7 +486,6 @@ paths:
       security:
       - tokenAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -489,7 +518,6 @@ paths:
       security:
       - tokenAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '200':
           content:
@@ -511,7 +539,6 @@ paths:
       security:
       - tokenAuth: []
       - cookieAuth: []
-      - {}
       responses:
         '204':
           description: No response body
@@ -526,11 +553,7 @@ paths:
       - {}
       responses:
         '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Csrfmiddlewaretoken'
-          description: ''
+          description: No response body
     post:
       operationId: utils_csrfmiddlewaretoken_create
       tags:
@@ -553,11 +576,7 @@ paths:
       - {}
       responses:
         '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Csrfmiddlewaretoken'
-          description: ''
+          description: No response body
 components:
   schemas:
     AuthToken:
@@ -580,23 +599,26 @@ components:
       required:
       - password
       - username
-    Csrfmiddlewaretoken:
-      type: object
-      properties:
-        csrfmiddlewaretoken:
-          type: string
-          maxLength: 64
-      required:
-      - csrfmiddlewaretoken
     CsrfmiddlewaretokenRequest:
       type: object
       properties:
         csrfmiddlewaretoken:
           type: string
+          writeOnly: true
           minLength: 1
           maxLength: 64
       required:
       - csrfmiddlewaretoken
+    GCMDeviceRequest:
+      type: object
+      properties:
+        registration_id:
+          type: string
+          writeOnly: true
+          minLength: 1
+          title: FCM Device Token
+      required:
+      - registration_id
     Login:
       type: object
       properties:
