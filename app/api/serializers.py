@@ -7,20 +7,12 @@ from todos.models import Todo
 UserModel = get_user_model()
 
 
-class TodoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Todo
-        fields = ["id", "content", "is_completed"]
-
-    def create(self, validated_data):
-        user = self.context["request"].user
-        # user = UserModel.objects.first()
-        todo = Todo.objects.create(user=user, **validated_data)
-        return todo
+class DrfAuthtokenSerializer(serializers.Serializer):
+    token = serializers.CharField(label="Token", read_only=True)
 
 
 class CsrfmiddlewaretokenSerializer(serializers.Serializer):
-    csrfmiddlewaretoken = serializers.CharField(max_length=64, write_only=True)
+    csrfmiddlewaretoken = serializers.CharField(max_length=64)
 
 
 class GCMDeviceSerializer(serializers.ModelSerializer):
@@ -61,6 +53,18 @@ class GCMDeviceSerializer(serializers.ModelSerializer):
             )
 
         return gcmdevice
+
+
+class TodoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Todo
+        fields = ["id", "content", "is_completed"]
+
+    def create(self, validated_data):
+        user = self.context["request"].user
+        # user = UserModel.objects.first()
+        todo = Todo.objects.create(user=user, **validated_data)
+        return todo
 
 
 # class UserSerializer(serializers.ModelSerializer):

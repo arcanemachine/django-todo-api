@@ -18,7 +18,19 @@ from todos.models import Todo
 UserModel = get_user_model()
 
 
+# MIXINS #
+class CrsfRequiredApiViewMixin(views.APIView):
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super().as_view(**initkwargs)
+        view.csrf_exempt = False
+        return view
+
+
+# VIEWS #
 def api_root(request):
+    """Show all available API documentation."""
+
     host = f"{request.scheme}://{request.get_host()}"
     return JsonResponse(
         {
@@ -30,21 +42,29 @@ def api_root(request):
 
 
 # auth
-class CrsfRequiredApiView(views.APIView):
-    @classmethod
-    def as_view(cls, **initkwargs):
-        view = super().as_view(**initkwargs)
-        view.csrf_exempt = False
-        return view
+class AuthStatusCheckSession(GenericAPIView):
+    """Check if a user is authenticated using session authentication."""
+
+    permission_classes = [drf_permissions.AllowAny]
+    serializer_class = serializers.DrfAuthtokenSerializer
+    authentication_classes = [SessionAuthentication]
+
+    def get(self, request):
+        return JsonResponse(request.user.is_authenticated, safe=False)
+
+
+class AuthStatusCheckToken(AuthStatusCheckSession):
+    """Check if a user is authenticated using token authentication."""
+
+    authentication_classes = [TokenAuthentication]
 
 
 class GCMDeviceViewSet(viewsets.ModelViewSet):
     """
-    Register or unregister a device with Firebase Cloud Messaging (FCM).
+    Register a device with Firebase Cloud Messaging (FCM).
     """
 
     authentication_classes = [TokenAuthentication]
-    permission_classes = [drf_permissions.IsAuthenticated]
     serializer_class = serializers.GCMDeviceSerializer
     queryset = GCMDevice.objects.all()  # drf_spectacular: allow automatic introspection
 
@@ -55,21 +75,22 @@ class GCMDeviceViewSet(viewsets.ModelViewSet):
         return get_object_or_404(GCMDevice, registration_id=registration_id, user=user)
 
 
-class ProjectObtainAuthToken(ObtainAuthToken):
+class TokenLogin(ObtainAuthToken):
+    """Login using token authentication."""
+
     authentication_classes = [TokenAuthentication]
+    permission_classes = [drf_permissions.AllowAny]
 
 
 class SessionLogin(LoginView):
+    """Login using session authentication."""
+
     authentication_classes = [SessionAuthentication]
-
-
-def auth_status_check(request):
-    return JsonResponse(request.user.is_authenticated, safe=False)
+    permission_classes = [drf_permissions.AllowAny]
 
 
 # todos
 class TodoViewSet(viewsets.ModelViewSet):
-    permission_classes = [drf_permissions.IsAuthenticated]
     queryset = Todo.objects.all()  # drf_spectacular: allow automatic introspection
     serializer_class = serializers.TodoSerializer
 
@@ -86,11 +107,11 @@ class TodoViewSet(viewsets.ModelViewSet):
 
 
 # utility
-class Csrfmiddlewaretoken(CrsfRequiredApiView, GenericAPIView):
+class Csrfmiddlewaretoken(CrsfRequiredApiViewMixin, views.APIView):
     serializer_class = serializers.CsrfmiddlewaretokenSerializer
     permission_classes = [drf_permissions.AllowAny]
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         # issue a new CSRF token
         data = {"csrfmiddlewaretoken": get_token(request)}
         serializer = serializers.CsrfmiddlewaretokenSerializer(data=data)

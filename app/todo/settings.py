@@ -7,6 +7,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
+APPEND_SLASH = False
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 LANGUAGE_CODE = "en-us"

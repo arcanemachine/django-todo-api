@@ -4,10 +4,42 @@ info:
   version: 0.0.1
   description: A basic todo list API.
 paths:
+  /api/auth/check/:
+    get:
+      operationId: auth_check_retrieve
+      description: Check if a user is authenticated using session authentication.
+      tags:
+      - auth
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DrfAuthtoken'
+          description: ''
+  /api/auth/check/token/:
+    get:
+      operationId: auth_check_token_retrieve
+      description: Check if a user is authenticated using token authentication.
+      tags:
+      - auth
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DrfAuthtoken'
+          description: ''
   /api/auth/fcm/:
     post:
       operationId: auth_fcm_create
-      description: Register or unregister a device with Firebase Cloud Messaging (FCM).
+      description: Register a device with Firebase Cloud Messaging (FCM).
       tags:
       - auth
       requestBody:
@@ -27,27 +59,32 @@ paths:
       responses:
         '201':
           description: No response body
-    delete:
-      operationId: auth_fcm_destroy
-      description: Register or unregister a device with Firebase Cloud Messaging (FCM).
+    put:
+      operationId: auth_fcm_update
+      description: Register a device with Firebase Cloud Messaging (FCM).
       tags:
       - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GCMDeviceRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GCMDeviceRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GCMDeviceRequest'
+        required: true
       security:
       - tokenAuth: []
       responses:
-        '204':
+        '200':
           description: No response body
   /api/auth/login/:
     post:
       operationId: auth_login_create
-      description: |-
-        Check the credentials and return the REST Token
-        if the credentials are valid and authenticated.
-        Calls Django Auth login method to register User ID
-        in Django session framework
-
-        Accept the following POST parameters: username, password
-        Return the REST Framework Token Object's key.
+      description: Login using session authentication.
       tags:
       - auth
       requestBody:
@@ -75,6 +112,7 @@ paths:
   /api/auth/login/token/:
     post:
       operationId: auth_login_token_create
+      description: Login using token authentication.
       tags:
       - auth
       requestBody:
@@ -91,6 +129,7 @@ paths:
         required: true
       security:
       - tokenAuth: []
+      - {}
       responses:
         '200':
           content:
@@ -553,7 +592,11 @@ paths:
       - {}
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Csrfmiddlewaretoken'
+          description: ''
     post:
       operationId: utils_csrfmiddlewaretoken_create
       tags:
@@ -576,7 +619,11 @@ paths:
       - {}
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Csrfmiddlewaretoken'
+          description: ''
 components:
   schemas:
     AuthToken:
@@ -599,16 +646,29 @@ components:
       required:
       - password
       - username
+    Csrfmiddlewaretoken:
+      type: object
+      properties:
+        csrfmiddlewaretoken:
+          type: string
+          maxLength: 64
+      required:
+      - csrfmiddlewaretoken
     CsrfmiddlewaretokenRequest:
       type: object
       properties:
         csrfmiddlewaretoken:
           type: string
-          writeOnly: true
           minLength: 1
           maxLength: 64
       required:
       - csrfmiddlewaretoken
+    DrfAuthtoken:
+      type: object
+      properties:
+        token:
+          type: string
+          readOnly: true
     GCMDeviceRequest:
       type: object
       properties:

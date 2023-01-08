@@ -15,16 +15,29 @@ router.register(r"todos", views.TodoViewSet, basename="todos")
 # router.register(r"users", views.UserViewSet, basename="users")
 
 urlpatterns = router.urls + [
-    path("", views.api_root, name="api_root"),
-    # auth
-    path("auth/check/", views.auth_status_check, name="auth_status_check"),
     path(
-        "auth/fcm/",
-        views.GCMDeviceViewSet.as_view({"post": "create", "delete": "destroy"}),
+        "",
+        views.api_root,
+        name="api_root",
+    ),
+    # auth
+    path(
+        "auth/check/",
+        views.AuthStatusCheckSession.as_view(),
+        name="auth_status_check",
+    ),
+    path(
+        "auth/check/token/",
+        views.AuthStatusCheckToken.as_view(),
+        name="auth_status_check_token",
+    ),
+    path(
+        "auth/fcm/",  # example here: how to specify HTTP methods for a viewset
+        views.GCMDeviceViewSet.as_view({"post": "create", "put": "destroy"}),
         name="gcmdevices",
     ),
-    path("auth/login/", views.SessionLogin.as_view(), name="login_session"),
-    path("auth/login/token/", views.ProjectObtainAuthToken.as_view(), name="login"),
+    path("auth/login/", views.SessionLogin.as_view(), name="login"),
+    path("auth/login/token/", views.TokenLogin.as_view(), name="login_token"),
     path("auth/", include("dj_rest_auth.urls")),
     path("auth/registration/", include("dj_rest_auth.registration.urls")),
     # utility
@@ -34,11 +47,7 @@ urlpatterns = router.urls + [
         name="csrfmiddlewaretoken",
     ),
     # schema
-    path(
-        "schema/",
-        SpectacularAPIView.as_view(),
-        name="schema",
-    ),
+    path("schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
         "schema/redoc/",
         SpectacularRedocView.as_view(url_name="api:schema"),
