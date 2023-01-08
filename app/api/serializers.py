@@ -42,7 +42,7 @@ class GCMDeviceSerializer(serializers.ModelSerializer):
         )
 
         # send a test message to ensure the token is valid
-        # (this code should be run asynchronously to avoid network bottlenecks)
+        # - this code should be moved to an async task to avoid network bottlenecks
         response = gcmdevice.send_message("Welcome to Todo List!")
         if (
             "error" in response["results"][0]
@@ -62,8 +62,15 @@ class TodoSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = self.context["request"].user
-        # user = UserModel.objects.first()
         todo = Todo.objects.create(user=user, **validated_data)
+
+        # send a notification to all of the user's registered FCM devices
+        # - this code should be moved to an async task to avoid network bottlenecks.
+        # - keep in mind this code is just a PoC for *how* to send notifications, not an
+        #   endorsement of spamming notifications for a basic todo list
+        for gcmdevice in GCMDevice.objects.all():
+            gcmdevice.send_message(f"New todo created: {todo.content}")
+
         return todo
 
 
