@@ -1,0 +1,906 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2023-02-03T05:22:11.725Z",
+  "__export_source": "insomnia.desktop.app:v2022.6.0",
+  "resources": [
+    {
+      "_id": "req_610b6943a453467188afa1a6ac2216cf",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1673141114675,
+      "created": 1671750075990,
+      "url": "{{ _.api_root }}/",
+      "name": "API Root",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_ff1c4ffc4231438db5ee45aff4bfd127",
+          "name": "Authorization",
+          "value": "Token {{ _.auth_token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1671750075990,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "parentId": null,
+      "modified": 1667242054654,
+      "created": 1667242054654,
+      "name": "New Document",
+      "description": "",
+      "scope": "design",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_e23d4f8e423b487887496d355884a8f1",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1673144200056,
+      "created": 1671602157066,
+      "url": "{{ _.api_root_utils }}/csrfmiddlewaretoken/",
+      "name": "csrftoken - get",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_44f2eddc97b14015978c8da98411b3b4",
+          "name": "X-CSRFToken",
+          "value": "{{ _.csrfmiddlewaretoken }}",
+          "description": "",
+          "disabled": false
+        },
+        {
+          "id": "pair_4d71f12e734a4bf5bca8f076d2d8c290",
+          "name": "",
+          "value": "",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1671602157066,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c4e31c2e75b14bcf81d41ffca82cd59b",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1673139463839,
+      "created": 1671602341639,
+      "url": "{{ _.api_root_utils }}/csrfmiddlewaretoken/",
+      "name": "csrftoken - check",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/x-www-form-urlencoded",
+        "params": [
+          {
+            "id": "pair_0168a6a3735e49d5b568e779a390e44d",
+            "name": "",
+            "value": "",
+            "description": "",
+            "disabled": true
+          }
+        ]
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_49b1cdaf7f6a41fd82f0d7a6e08c343c",
+          "name": "X-CSRFToken",
+          "value": "{{ _.csrfmiddlewaretoken }}",
+          "description": "",
+          "disabled": false
+        },
+        {
+          "id": "pair_34d8ea1affe643949453d99f6886c00f",
+          "name": "Referer",
+          "value": "{{ _.api_root }}",
+          "description": "",
+          "disabled": false
+        },
+        {
+          "name": "",
+          "value": "",
+          "id": "pair_90ce3bfb0fb64b1fbf31e85dfedf7fce"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1671470529013.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_ba91417f319446fa85089d8005525410",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1675401709991,
+      "created": 1671338900961,
+      "url": "{{ _.api_root_auth }}/login/ {{",
+      "name": "Session Auth - Login User",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/x-www-form-urlencoded",
+        "params": [
+          {
+            "id": "pair_2d01d0aa7d104c00b6e8374245d30e2a",
+            "name": "username",
+            "value": "{{ _.username }}",
+            "description": ""
+          },
+          {
+            "id": "pair_f1706c140e88475095745fcf083f48ca",
+            "name": "password",
+            "value": "{{ _.password }}",
+            "description": ""
+          }
+        ]
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded",
+          "id": "pair_a894bdcbcf9047839df99537e0fece74"
+        },
+        {
+          "id": "pair_2be4721aa5db467f9afe8f5734fa90c1",
+          "name": "Referer",
+          "value": "https://tower.test",
+          "description": ""
+        },
+        {
+          "id": "pair_b2d2f0c7328247bfb4d58af455895d5e",
+          "name": "X-CSRFToken",
+          "value": "{{ _.csrftoken }}",
+          "description": "",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1671338900961,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_72fe843fc55f41bd8d3651f479b74641",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1675372568676,
+      "created": 1672738453953,
+      "url": "{{ _.api_root_auth }}/login/token/",
+      "name": "Token Auth - Login User",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/x-www-form-urlencoded",
+        "params": [
+          {
+            "id": "pair_2d01d0aa7d104c00b6e8374245d30e2a",
+            "name": "username",
+            "value": "{{ _.username }}",
+            "description": ""
+          },
+          {
+            "id": "pair_f1706c140e88475095745fcf083f48ca",
+            "name": "password",
+            "value": "{{ _.password }}",
+            "description": "",
+            "disabled": false
+          }
+        ]
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded",
+          "id": "pair_a894bdcbcf9047839df99537e0fece74"
+        },
+        {
+          "id": "pair_2be4721aa5db467f9afe8f5734fa90c1",
+          "name": "Referer",
+          "value": "https://tower.test",
+          "description": ""
+        },
+        {
+          "id": "pair_b2d2f0c7328247bfb4d58af455895d5e",
+          "name": "X-CSRFToken",
+          "value": "{{ _.csrftoken }}",
+          "description": "",
+          "disabled": false
+        },
+        {
+          "id": "pair_bdd5c887cfcb493380f33e80affc2ae5",
+          "name": "",
+          "value": "",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1671337471187.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_323210e5b8064d01a4bdd4a5fa4d08e3",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1673139478815,
+      "created": 1671750914531,
+      "url": "{{ _.api_root_auth }}/check/",
+      "name": "Session Auth - Check",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/x-www-form-urlencoded", "params": [] },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_873ff2f8edc945daabd848d128b0f22e",
+          "name": "Referer",
+          "value": "https://tower.test",
+          "description": ""
+        },
+        {
+          "id": "pair_e6138dbee8504c8f99687e62839255d2",
+          "name": "",
+          "value": "",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1671336041414.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_765987fb665c4021a2298f6cadf19a93",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1673140890735,
+      "created": 1673139404490,
+      "url": "{{ _.api_root_auth }}/check/token/",
+      "name": "Token Auth - Check",
+      "description": "",
+      "method": "GET",
+      "body": { "mimeType": "application/x-www-form-urlencoded", "params": [] },
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_873ff2f8edc945daabd848d128b0f22e",
+          "name": "Authentication",
+          "value": "Token {{ _.auth_token }}",
+          "description": "",
+          "disabled": true
+        },
+        {
+          "id": "pair_e6138dbee8504c8f99687e62839255d2",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "disabled": true
+        },
+        {
+          "id": "pair_9bb3d1dfa509461bbbc366a51cb94a3b",
+          "name": "Accept",
+          "value": "application/json",
+          "description": "",
+          "disabled": true
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1671334611641.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_37236fe1e8ed46b98d3e8a3b07304a81",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1672977808162,
+      "created": 1671333181868,
+      "url": "{{ _.api_root_auth }}/registration/",
+      "name": "Auth - Register User",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/x-www-form-urlencoded",
+        "params": [
+          {
+            "id": "pair_3fa2258d45a14ccd9cc0ebc0e0f8e716",
+            "name": "username",
+            "value": "{{ username }}30",
+            "description": ""
+          },
+          {
+            "id": "pair_62ae68a632b843df8ef21cb970c96a5d",
+            "name": "password1",
+            "value": "{{ password }}",
+            "description": ""
+          },
+          {
+            "id": "pair_9fc4b579c340433abe8e4578fb66ce6c",
+            "name": "password2",
+            "value": "{{ password }}",
+            "description": ""
+          },
+          {
+            "id": "pair_8f3ff09c96ef48dda3559c41946fcc39",
+            "name": "email",
+            "value": "{{ username }}30@example.com",
+            "description": ""
+          }
+        ]
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/x-www-form-urlencoded",
+          "id": "pair_d5e815d4066b4b0bbcb8e284a5928006"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1671333181868,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_7b039f0fe97f475bbd9290eef8bb07c4",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1671341457868,
+      "created": 1670703735865,
+      "url": "http://localhost:{{ host_port }}/api/todos/25",
+      "name": "Delete Todo",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_bdd15bd752114e31960a9ff3b7029144",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1670703735865,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_f706a8b059bf4792b8345db10f16d7f3",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1673143795214,
+      "created": 1670696400570,
+      "url": "{{ api_host }}/api/todos/",
+      "name": "Create Todo",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"content\": \"\",\n\t\"is_completed\": false\t\t\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_19c2e686972c469282129b42f08a3525"
+        },
+        {
+          "id": "pair_601f741e3e934ef8bfe3647b685a98aa",
+          "name": "Authorization",
+          "value": "Token {{ auth_token }}",
+          "description": ""
+        },
+        {
+          "id": "pair_81624ae5263e42af93cafc49a090c324",
+          "name": "Referer",
+          "value": "{{ _.api_root }}",
+          "description": "",
+          "disabled": false
+        },
+        {
+          "id": "pair_c1aaa9db1e0349cf83a7abf00962112a",
+          "name": "X-CSRFToken",
+          "value": "{{ _.csrftoken }}",
+          "description": "",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 0,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_8ba49742b35f4b748bb8fff0643169fc",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1673141196005,
+      "created": 1673121845462,
+      "url": "{{ api_host }}/api/auth/fcm/",
+      "name": "Register FCM Token",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"registration_id\": \"{{ _.fcm_device_token }}\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_19c2e686972c469282129b42f08a3525"
+        },
+        {
+          "id": "pair_601f741e3e934ef8bfe3647b685a98aa",
+          "name": "Authorization",
+          "value": "Token {{ auth_token }}",
+          "description": ""
+        },
+        {
+          "id": "pair_81624ae5263e42af93cafc49a090c324",
+          "name": "Referer",
+          "value": "{{ _.api_root }}",
+          "description": "",
+          "disabled": true
+        },
+        {
+          "id": "pair_c1aaa9db1e0349cf83a7abf00962112a",
+          "name": "X-CSRFToken",
+          "value": "{{ _.csrfmiddlewaretoken }}",
+          "description": "",
+          "disabled": true
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 50,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_2b48ace25d324d5587e4b05ed40e70c8",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1673141201493,
+      "created": 1673123808810,
+      "url": "{{ api_host }}/api/auth/fcm/",
+      "name": "Unregister FCM Token",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"registration_id\": \"{{ _.fcm_device_token }}\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_19c2e686972c469282129b42f08a3525"
+        },
+        {
+          "id": "pair_601f741e3e934ef8bfe3647b685a98aa",
+          "name": "Authorization",
+          "value": "Token {{ auth_token }}",
+          "description": ""
+        },
+        {
+          "id": "pair_81624ae5263e42af93cafc49a090c324",
+          "name": "Referer",
+          "value": "{{ _.api_root }}",
+          "description": "",
+          "disabled": true
+        },
+        {
+          "id": "pair_c1aaa9db1e0349cf83a7abf00962112a",
+          "name": "X-CSRFToken",
+          "value": "{{ _.csrfmiddlewaretoken }}",
+          "description": "",
+          "disabled": true
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0b93f514e9b74afb94db05b23b84384e",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1671497130127,
+      "created": 1670703254950,
+      "url": "{{ api_root }}/todos/18",
+      "name": "Get Todo",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": 100,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_22e49218a6e749f59f70509b373535d9",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1672783364571,
+      "created": 1670703248630,
+      "url": "{{ api_root }}/todos",
+      "name": "List Todos",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_a18362014afc49e59b7e760c68ee1edc",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_86ab509bc65d4b0dbd2cb00bb2c5c505",
+          "name": "Authorization",
+          "value": "Token {{ token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 200,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_938e0fd611964cb58f3b52c823e1aa66",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1673121804679,
+      "created": 1672783375360,
+      "url": "{{ api_root }}/todos",
+      "name": "(Token) List Todos",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_a18362014afc49e59b7e760c68ee1edc",
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "id": "pair_86ab509bc65d4b0dbd2cb00bb2c5c505",
+          "name": "Authorization",
+          "value": "Token {{ auth_token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 250,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d5e38be403034cefa9bb72acd2bb0ab1",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1671341487677,
+      "created": 1670703676333,
+      "url": "localhost:{{ _.host_port }}/api/todos/26",
+      "name": "Update Todo (PATCH)",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"is_completed\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_076999a26333472b86f6d367025c6b0e"
+        },
+        {
+          "id": "pair_f2e9ecd66e7e4b6c810e4c8b96d410bf",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 300,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4e14c631b0da4b4ba5ddca5a1e8ee298",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1671341589694,
+      "created": 1670703618894,
+      "url": "localhost:{{ _.host_port }}/api/todos/26",
+      "name": "Update Todo (PUT)",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"content\": \"Hello everyone!\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e56ae952c706478c966c93da86f9130b"
+        },
+        {
+          "id": "pair_edf905136e1249469adf217585c082a1",
+          "name": "Authorization",
+          "value": "Token {{ _.token }}",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 400,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_ada7b868a32e3380ce9deb4594ae12aac43b4bed",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1675401673362,
+      "created": 1667242054666,
+      "name": "Base Environment",
+      "data": {
+        "api_host": "https://tower.test",
+        "api_host_2": "http://192.168.1.100:8000",
+        "api_root": "{{ _.api_host }}/api",
+        "api_root_auth": "{{ _.api_root }}/auth",
+        "api_root_utils": "{{ _.api_root }}/utils",
+        "todo_id": 2,
+        "username": "user",
+        "password": "distance",
+        "csrftoken": "TZY0jz1olonwRszCyl8T7yWmigYLQANC",
+        "csrfmiddlewaretoken": "7DWBmODc19sAhcLXnk6DsceMb6hs7uw5QsKrvduqcnFWYuapLv4mpA0Yjc53NU9x",
+        "auth_token": "fc60f1903203ab98c33ea4ade227cc9294d930dc",
+        "fcm_device_token": "ehVNZQJGQHqVULF2giLnRh:APA91bEW0x_Ld0hmmM0skGsdcm8gsmapVeRpfmhE8XrYS23Y93oMwNzPJ2s0tTKN-5BDrP5SdkhLKdkcewFImj7eKbW3e6Vydd9IYeUt3qLw6DM04GkPpwAy1vpTdM2oHHZykF8NySDe"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "api_host",
+          "api_host_2",
+          "api_root",
+          "api_root_auth",
+          "api_root_utils",
+          "todo_id",
+          "username",
+          "password",
+          "csrftoken",
+          "csrfmiddlewaretoken",
+          "auth_token",
+          "fcm_device_token"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1667242054666,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_ada7b868a32e3380ce9deb4594ae12aac43b4bed",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1675372594298,
+      "created": 1667242054668,
+      "name": "Default Jar",
+      "cookies": [
+        {
+          "key": "csrftoken",
+          "value": "nBFrk5a2oldFEZbZyHvjOX3nO3IPQ71U",
+          "expires": "2024-02-01T21:16:34.000Z",
+          "maxAge": 31449600,
+          "domain": "tower.test",
+          "path": "/",
+          "extensions": ["SameSite=Lax"],
+          "hostOnly": true,
+          "creation": "2022-12-23T07:52:46.502Z",
+          "lastAccessed": "2023-02-02T21:16:34.296Z",
+          "id": "9446752768661908"
+        },
+        {
+          "key": "sessionid",
+          "value": "7pfq3wqzgh8j6ya4h5w786rvhons7v4s",
+          "expires": "2023-02-16T21:16:34.000Z",
+          "maxAge": 1209600,
+          "domain": "tower.test",
+          "path": "/",
+          "httpOnly": true,
+          "extensions": ["SameSite=Lax"],
+          "hostOnly": true,
+          "creation": "2022-12-29T19:15:58.501Z",
+          "lastAccessed": "2023-02-02T21:16:34.297Z",
+          "id": "1695823117364461"
+        },
+        {
+          "key": "messages",
+          "value": ".eJyLjlaKj88qzs-Lz00tLk5MT1XSMdAxMtVRCi5NTgaKpJXm5FQqFGem56WmKGTmKSQWK5QWpxYZG-gp6SgpxepQpj0WALG2Kec:1pE1hE:SpOcqNdsrebJ15zK8qKvirtt3WTJ3Nrwe12ThULpKo4",
+          "domain": "tower.test",
+          "path": "/",
+          "httpOnly": true,
+          "extensions": ["SameSite=Lax"],
+          "hostOnly": true,
+          "creation": "2023-01-06T04:03:29.171Z",
+          "lastAccessed": "2023-01-07T05:24:44.631Z",
+          "id": "20362662459809178"
+        }
+      ],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_deaac280d7e94a838d416c76362cc637",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1675401561313,
+      "created": 1667242054664,
+      "fileName": "Django Todo List API",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "uts_ea04016f85194e90a8421d7d7012c855",
+      "parentId": "wrk_f1a1a30973a1481ab7019bb0a6d8019b",
+      "modified": 1667242054671,
+      "created": 1667242054671,
+      "name": "Example Test Suite",
+      "_type": "unit_test_suite"
+    },
+    {
+      "_id": "env_b7eed6bacfca4baea0910fbb8de96f87",
+      "parentId": "env_ada7b868a32e3380ce9deb4594ae12aac43b4bed",
+      "modified": 1675401709734,
+      "created": 1675401614534,
+      "name": "Django Todo List",
+      "data": {
+        "api_host": "https://tower.test",
+        "api_host_2": "http://192.168.1.100:8000",
+        "api_root": "{{ _.api_host }}/api",
+        "api_root_auth": "{{ _.api_root }}/auth",
+        "api_root_utils": "{{ _.api_root }}/utils",
+        "todo_id": 2,
+        "username": "user",
+        "password": "distance",
+        "csrftoken": "TZY0jz1olonwRszCyl8T7yWmigYLQANC",
+        "csrfmiddlewaretoken": "7DWBmODc19sAhcLXnk6DsceMb6hs7uw5QsKrvduqcnFWYuapLv4mpA0Yjc53NU9x",
+        "auth_token": "fc60f1903203ab98c33ea4ade227cc9294d930dc",
+        "fcm_device_token": "ehVNZQJGQHqVULF2giLnRh:APA91bEW0x_Ld0hmmM0skGsdcm8gsmapVeRpfmhE8XrYS23Y93oMwNzPJ2s0tTKN-5BDrP5SdkhLKdkcewFImj7eKbW3e6Vydd9IYeUt3qLw6DM04GkPpwAy1vpTdM2oHHZykF8NySDe"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "api_host",
+          "api_host_2",
+          "api_root",
+          "api_root_auth",
+          "api_root_utils",
+          "todo_id",
+          "username",
+          "password",
+          "csrftoken",
+          "csrfmiddlewaretoken",
+          "auth_token",
+          "fcm_device_token"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1675401614534,
+      "_type": "environment"
+    }
+  ]
+}
