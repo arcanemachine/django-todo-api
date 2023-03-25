@@ -106,7 +106,7 @@ SPECTACULAR_SETTINGS: Dict[str, any] = {
     "DESCRIPTION": "A basic todo list API.",
     "VERSION": "0.0.1",
     "SERVE_INCLUDE_SCHEMA": False,
-    "SERVERS": ["http://192.168.1.100:8001"],
+    "SERVERS": [{"url": "https://192.168.1.100:8000"}],
 }
 
 # rest_framework
