@@ -4,27 +4,27 @@
 #
 #    pip-compile requirements.in
 #
-asgiref==3.5.2
+asgiref==3.6.0
     # via django
-attrs==22.1.0
+attrs==22.2.0
     # via jsonschema
-build==0.9.0
+build==0.10.0
     # via pip-tools
 certifi==2022.12.7
     # via requests
 cffi==1.15.1
     # via cryptography
-charset-normalizer==2.1.1
+charset-normalizer==3.1.0
     # via requests
 click==8.1.3
     # via pip-tools
-cryptography==38.0.4
+cryptography==40.0.1
     # via pyjwt
 defusedxml==0.7.1
     # via python3-openid
-dj-rest-auth[with_social]==2.2.5
+dj-rest-auth[with_social]==3.0.0
     # via -r requirements.in
-django==4.1.4
+django==4.1.7
     # via
     #   -r requirements.in
     #   dj-rest-auth
@@ -33,9 +33,9 @@ django==4.1.4
     #   django-push-notifications
     #   djangorestframework
     #   drf-spectacular
-django-allauth==0.50.0
+django-allauth==0.52.0
     # via dj-rest-auth
-django-cors-headers==3.13.0
+django-cors-headers==3.14.0
     # via -r requirements.in
 django-push-notifications==3.0.0
     # via -r requirements.in
@@ -44,7 +44,7 @@ djangorestframework==3.14.0
     #   -r requirements.in
     #   dj-rest-auth
     #   drf-spectacular
-drf-spectacular==0.24.2
+drf-spectacular==0.26.1
     # via -r requirements.in
 idna==3.4
     # via requests
@@ -54,25 +54,25 @@ jsonschema==4.17.3
     # via drf-spectacular
 oauthlib==3.2.2
     # via requests-oauthlib
-packaging==22.0
+packaging==23.0
     # via build
-pep517==0.13.0
-    # via build
-pip-tools==6.11.0
+pip-tools==6.12.3
     # via -r requirements.in
 pycparser==2.21
     # via cffi
 pyjwt[crypto]==2.6.0
     # via django-allauth
-pyrsistent==0.19.2
+pyproject-hooks==1.0.0
+    # via build
+pyrsistent==0.19.3
     # via jsonschema
 python3-openid==3.2.0
     # via django-allauth
-pytz==2022.6
+pytz==2022.7.1
     # via djangorestframework
 pyyaml==6.0
     # via drf-spectacular
-requests==2.28.1
+requests==2.28.2
     # via
     #   django-allauth
     #   requests-oauthlib
@@ -83,12 +83,12 @@ sqlparse==0.4.3
 tomli==2.0.1
     # via
     #   build
-    #   pep517
+    #   pyproject-hooks
 uritemplate==4.1.1
     # via drf-spectacular
-urllib3==1.26.13
+urllib3==1.26.15
     # via requests
-wheel==0.38.4
+wheel==0.40.0
     # via pip-tools
 
 # The following packages are considered to be unsafe in a requirements file:
