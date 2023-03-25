@@ -897,6 +897,7 @@ components:
       properties:
         key:
           type: string
+          writeOnly: true
           minLength: 1
       required:
       - key
@@ -911,4 +912,4 @@ components:
       name: Authorization
       description: Token-based authentication with required prefix "Token"
 servers:
-- http://192.168.1.100:8001
+- url: https://192.168.1.100:8000
