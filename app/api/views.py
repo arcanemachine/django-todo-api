@@ -112,7 +112,9 @@ class Csrfmiddlewaretoken(CrsfRequiredApiViewMixin, views.APIView):
     permission_classes = [drf_permissions.AllowAny]
 
     def get(self, request):
-        # issue a new CSRF token
+        """
+        Issue a new CSRF token.
+        """
         data = {"csrfmiddlewaretoken": get_token(request)}
         serializer = serializers.CsrfmiddlewaretokenSerializer(data=data)
 
@@ -122,6 +124,9 @@ class Csrfmiddlewaretoken(CrsfRequiredApiViewMixin, views.APIView):
             return Response({"message": "Could not create csrfmiddlewaretoken"})
 
     def post(self, request, *args, **kwargs):
-        # check if the user's CSRF token is valid (it is always safe to return True
-        # here because the CSRF middleware will catch any unauthorized requests)
+        """
+        Check if the user's CSRF token is valid.
+        """
+        # it is always safe to return True here because the CSRF middleware will catch
+        # any unauthorized requests
         return JsonResponse(True, safe=False)
